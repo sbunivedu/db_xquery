@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Movies>
+  <Movie title = "King Kong">
+    <Version year = "1933">
+      <Star>Fay Wray</Star>
+    </Version>
+    <Version year = "1976">
+      <Star>Jeff Bridges</Star>
+      <Star>Jessica Lange</Star>
+    </Version>
+    <Version year = "2005" />
+  </Movie>
+  <Movie title = "Footloose">
+    <Version year = "1984">
+      <Star>Kevin Bacon</Star>
+      <Star>John Lithgow</Star>
+      <Star>Sarah Jessica Parker</Star>
+      <Star>Carrie Fisher</Star>
+    </Version>
+  </Movie>
+</Movies>

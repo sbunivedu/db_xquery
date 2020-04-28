@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<cars>
+  <car id="1">Ford</car>
+  <car id="2">Mazda</car>
+  <car id="3">Toyota</car>
+  <car id="4">Lexus</car>
+</cars>
