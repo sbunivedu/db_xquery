@@ -147,7 +147,7 @@ expected output:
 
 Find the cities in which stars (in `stars.xml`) mentioned in the `movies.xml` file live.
 ```xml
-let $movies := doc("movies.xml")
+let $movies := doc("movies.xml"),
     $stars := doc("stars.xml")
 for $s1 in $movies/Movies/Movie/Version/Star,
     $s2 in $stars/Stars/Star
