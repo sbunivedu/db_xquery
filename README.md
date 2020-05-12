@@ -383,3 +383,4 @@ expected output:
 ## References
 * https://www.w3schools.com/xml/xquery_intro.asp
 * https://www.tutorialspoint.com/xquery/xquery_quick_guide.htm
+* https://en.wikibooks.org/wiki/XQuery
