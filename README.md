@@ -9,8 +9,10 @@ List all book elements.
 let $books := doc("books.xml")
 for $book in $books/bookstore/book
 return $book
+```
 
 expected output:
+```xml
 <book category="cooking">
   <title lang="en">Everyday Italian</title>
   <author>Giada De Laurentiis</author>
@@ -38,8 +40,10 @@ return <Books>{$books}</Books>
 
 let $books := doc("books.xml")/bookstore/book
 return <Books>{$books}</Books>
+```
 
 expected output:
+```xml
 <Books>
   <book category="cooking">
     <title lang="en">Everyday Italian</title>
@@ -61,15 +65,17 @@ expected output:
 This examples shows that `$books` is a sequence of `book` elements.
 
 Find the titles of books that cost more than 30.
-```
+```xml
 let $books := doc("books.xml")
 for $book in $books/bookstore/book
 where $book/price>30
 return data($book/title)
 
 data(doc("books.xml")/bookstore/book[price>30]/title)
+```
 
 expected output:
+```xml
 XQuery Kick Start
 Lernen XML
 ```
@@ -82,8 +88,10 @@ for $book in $books/bookstore/book
 where $book/price>30
 order by $book/title
 return data($book/title)
+```
 
 expected output:
+```xml
 Lernen XML
 XQuery Kick Start
 ```
@@ -94,8 +102,10 @@ List all the star elements found among the versions of all movies.
 let $movies := doc("movies.xml")
 for $m in $movies/Movies/Movie
 return $m/Version/Star
+```
 
 expected output:
+```xml
 <Star>Fay Wray</Star>
 <Star>Jeff Bridges</Star>
 <Star>Jessica Lange</Star>
@@ -111,8 +121,10 @@ in. The title will be an attribute of the Movie element. Note the `""` and `{}` 
 let $movies := doc("movies.xml")
 for $m in $movies/Movies/Movie
 return <Movie title="{$m/@title}">{$m/Version/Star}</Movie>
+```
 
 expected output:
+```xml
 <Movie title="King Kong">
   <Star>Fay Wray</Star>
   <Star>Jeff Bridges</Star>
@@ -133,8 +145,10 @@ let $starSeq := (
   return $m/Version/Star
 )
 return <Stars>{$starSeq}</Stars>
+```
 
 expected output:
+```xml
 <Stars>
   <Star>Fay Wray</Star>
   <Star>Jeff Bridges</Star>
@@ -153,8 +167,10 @@ for $s1 in $movies/Movies/Movie/Version/Star,
     $s2 in $stars/Stars/Star
 where data($s1) = data($s2/Name)
 return $s2/Address/City
+```
 
 expected output:
+```xml
 <City>Hollywood</City>
 <City>Malibu</City>
 ```
@@ -165,8 +181,10 @@ let $movies := doc("movies.xml")
 for $m in $movies/Movies/Movie
 where count($m/Version) > 1
 return $m
+```
 
 expected output:
+```xml
 <Movie title="King Kong">
   <Version year="1933">
     <Star>Fay Wray</Star>
@@ -189,8 +207,10 @@ return
   if ($v/@year = max($kk/Version/@year))
   then <Latest>{$v}</Latest>
   else <Old>{$v}</Old>
+```
 
 expected output:
+```xml
 <Old>
   <Version year="1933">
     <Star>Fay Wray</Star>
@@ -215,8 +235,10 @@ for $m in $movies/Movies/Movie,
   $v in $m/Version
 order $v/@year
 return <Movie title="{$m/@title}" year="{$v/@year}" />
+```
 
 expected output:
+```xml
 <Movie title="King Kong" year="1933"/>
 <Movie title="King Kong" year="1976"/>
 <Movie title="Footloose" year="1984"/>
@@ -233,8 +255,10 @@ let $ships := doc("ships.xml")
 for $class in $ships/Ships/Class
 where $class/@numGuns >= 10
 return data($class/@name)
+```
 
 expected output:
+```
 Tennessee
 King George V
 ```
@@ -248,8 +272,10 @@ let $ships := doc("ships.xml")
 for $class in $ships/Ships/Class
 where $class/@numGuns >= 10
 return data($class/Ship/@name)
+```
 
 expected output:
+```xml
 Tennessee
 California
 King George V
@@ -270,8 +296,10 @@ let $ships := doc("ships.xml")
 for $ship in $ships//Ship[Battle]
 where $ship/Battle/@outcome = "sunk"
 return data($ship/@name)
+```
 
 expected output:
+```xml
 Kirishima
 Prince of Wales
 ```
@@ -282,8 +310,10 @@ let $ships := doc("ships.xml")
 for $class in $ships/Ships/Class
 where count($class/Ship) >= 3
 return data($class/@name)
+```
 
 expected output:
+```
 Kongo
 King George V
 ```
@@ -299,8 +329,10 @@ let $ships := doc("Ships.xml")
 for $class in $ships//Class
 where every $ship in $class/Ship satisfies count($ship/Battle) = 0
 return data($class/@name)
+```
 
 expected output:
+```
 0 results
 ```
 
@@ -320,8 +352,10 @@ let $ships := doc("Ships.xml")
 for $class in $ships//Class
 where some $ship in $class/Ship satisfies count($class/Ship[@launched = $ship/@launched]) >= 2
 return data($class/@name)
+```
 
 expected output:
+```
 Kongo
 North Carolina
 King George V
@@ -347,8 +381,10 @@ return <Battle name = "{$battle}">
   for $ship in $ships//Ship[data(Battle) = $battle]
   return <Ship name = "{data($ship/@name)}" />
 }</Battle>
+```
 
 expected output:
+```xml
 <Battle name="Guadalcanal">
   <Ship name="Kirishima"/>
   <Ship name="Washington"/>
@@ -374,8 +410,10 @@ List cars with "id" attribute from 2 to 3.
 let $cars := doc("cars.xml")
 let $range := 2 to 3
 return $cars//car[@id = $range]
+```
 
 expected output:
+```xml
 <car id="2">Mazda</car>
 <car id="3">Toyota</car>
 ```
